@@ -1,0 +1,106 @@
+<!-- app/views/home/index.html.erb -->
+<div class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
+  <!-- Hero Section -->
+  <section class="relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20 lg:py-24">
+      <div class="text-center">
+        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 mb-4 sm:mb-6 leading-tight">
+          Bem-vindo à
+          <span class="block sm:inline text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
+            Nossa Aplicação
+          </span>
+        </h1>
+        <p class="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 mb-6 sm:mb-8 max-w-xs sm:max-w-2xl md:max-w-3xl lg:max-w-4xl mx-auto px-2 sm:px-0">
+          Uma aplicação moderna construída com Ruby on Rails 8 e Tailwind CSS,
+          oferecendo a melhor experiência para nossos usuários.
+        </p>
+        <div class="flex flex-col xs:flex-row sm:flex-row gap-3 sm:gap-4 justify-center items-center max-w-sm sm:max-w-none mx-auto">
+          <%= link_to "#", class: "w-full xs:w-auto bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 sm:py-4 px-6 sm:px-8 rounded-lg transition duration-200 transform hover:scale-105 text-center text-sm sm:text-base" do %>
+            Começar Agora
+          <% end %>
+          <%= link_to "#", class: "w-full xs:w-auto bg-white hover:bg-gray-50 text-gray-800 font-semibold py-3 sm:py-4 px-6 sm:px-8 rounded-lg border border-gray-300 transition duration-200 text-center text-sm sm:text-base" do %>
+            Saiba Mais
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="py-12 sm:py-16 md:py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12 sm:mb-16">
+        <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 sm:mb-4">
+          Por que escolher nossa plataforma?
+        </h2>
+        <p class="text-gray-600 text-sm sm:text-base md:text-lg lg:text-xl max-w-xs sm:max-w-2xl lg:max-w-3xl mx-auto px-2 sm:px-0">
+          Desenvolvida com as melhores tecnologias para oferecer performance e usabilidade excepcionais.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        <% @featured_items.each do |item| %>
+          <div class="bg-gray-50 rounded-xl p-6 sm:p-8 hover:shadow-lg transition duration-300 transform hover:-translate-y-1">
+            <div class="text-3xl sm:text-4xl mb-3 sm:mb-4"><%= item[:icon] %></div>
+            <h3 class="text-lg sm:text-xl font-semibold text-gray-900 mb-2 sm:mb-3">
+              <%= item[:title] %>
+            </h3>
+            <p class="text-gray-600 text-sm sm:text-base">
+              <%= item[:description] %>
+            </p>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="py-12 sm:py-16 md:py-20 bg-gradient-to-r from-blue-600 to-purple-600">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-8 sm:mb-12">
+        <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3 sm:mb-4">
+          Números que impressionam
+        </h2>
+        <p class="text-blue-100 text-sm sm:text-base md:text-lg lg:text-xl">
+          Veja o impacto da nossa plataforma
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8">
+        <div class="text-center py-4 sm:py-0">
+          <div class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-1 sm:mb-2">
+            <%= number_with_delimiter(@stats[:users]) %>+
+          </div>
+          <div class="text-blue-100 text-sm sm:text-base md:text-lg">Usuários Ativos</div>
+        </div>
+        <div class="text-center py-4 sm:py-0 border-t sm:border-t-0 border-blue-400 sm:border-none pt-4 sm:pt-0">
+          <div class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-1 sm:mb-2">
+            <%= @stats[:projects] %>+
+          </div>
+          <div class="text-blue-100 text-sm sm:text-base md:text-lg">Projetos Criados</div>
+        </div>
+        <div class="text-center py-4 sm:py-0 border-t sm:border-t-0 border-blue-400 sm:border-none pt-4 sm:pt-0">
+          <div class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-1 sm:mb-2">
+            <%= number_with_delimiter(@stats[:downloads]) %>+
+          </div>
+          <div class="text-blue-100 text-sm sm:text-base md:text-lg">Downloads</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-12 sm:py-16 md:py-20 bg-gray-900">
+    <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6">
+        Pronto para começar?
+      </h2>
+      <p class="text-gray-300 text-sm sm:text-base md:text-lg lg:text-xl mb-6 sm:mb-8 max-w-xs sm:max-w-2xl mx-auto">
+        Junte-se a milhares de usuários que já descobriram o poder da nossa plataforma.
+      </p>
+      <%= link_to "#", class: "inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 sm:py-4 px-8 sm:px-10 rounded-lg text-sm sm:text-base md:text-lg transition duration-200 transform hover:scale-105" do %>
+        Criar Conta Gratuita
+      <% end %>
+    </div>
+  </section>
+</div>
